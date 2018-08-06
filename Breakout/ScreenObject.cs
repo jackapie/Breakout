@@ -13,7 +13,8 @@ namespace Breakout
         public int Y { get; protected set; }
         public void Move(int dx, int dy)
         {
-
+            X = X + dx;
+            Y = Y + dy;
         }
 
     }
