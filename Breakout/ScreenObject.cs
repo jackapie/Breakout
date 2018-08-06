@@ -9,13 +9,16 @@ namespace Breakout
     public class ScreenObject
 
     {
-        public int X { get; protected set; }
-        public int Y { get; protected set; }
+        public int PositionX { get; protected set; }
+        public int PositionY { get; protected set; }
         public void Move(int dx, int dy)
         {
-            X = X + dx;
-            Y = Y + dy;
+            PositionX = PositionX + dx;
+            PositionY = PositionY + dy;
         }
+
+        public int SizeX { get; protected set; }
+        public int SizeY { get; protected set; }
 
     }
 }

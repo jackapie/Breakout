@@ -8,5 +8,10 @@ namespace Breakout
 {
     public class Bat : ScreenObject
     {
+        public Bat()
+        {
+            SizeX = 3;
+            SizeY = 1;
+        }
     }
 }

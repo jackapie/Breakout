@@ -9,5 +9,11 @@ namespace Breakout
     public class Brick : ScreenObject
     {
         public string Colour { get; set; }
+
+        public Brick()
+        {
+            SizeX = 3;
+            SizeY = 1;
+        }
     }
 }

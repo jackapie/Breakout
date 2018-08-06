@@ -8,5 +8,10 @@ namespace Breakout
 {
     public class Ball : ScreenObject
     {
+        public Ball()
+        {
+            SizeX = 1;
+            SizeY = 1;
+        }
     }
 }
