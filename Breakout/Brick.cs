@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Breakout
 {
-    public class Class1
+    public class Brick : ScreenObject
     {
+        public string Colour { get; set; }
     }
 }
