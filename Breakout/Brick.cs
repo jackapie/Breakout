@@ -8,7 +8,7 @@ namespace Breakout
 {
     public class Brick : ScreenObject
     {
-        public string Colour { get; set; }
+       
 
         public Brick()
         {
