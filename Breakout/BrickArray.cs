@@ -19,14 +19,17 @@ namespace Breakout
                 var brick1 = new Brick();
                 brick1.PositionX = 3 * Counter + 15;
                 brick1.PositionY = 15;
+                Bricks.Add(brick1);
 
                 var brick2 = new Brick();
                 brick2.PositionX = 3 * Counter + 15;
                 brick2.PositionY = 16;
+                Bricks.Add(brick2);
 
                 var brick3 = new Brick();
                 brick3.PositionX = 3 * Counter + 15;
                 brick3.PositionY = 17;
+                Bricks.Add(brick3);
 
                 int a = brick1.PositionX % 2;
                 int b = brick2.PositionX % 2;
