@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Breakout
 {
-    class LeftEdge : ScreenObject
+    public class LeftEdge : ScreenObject
     {
         public LeftEdge(int maxY)
         {

@@ -17,8 +17,21 @@ namespace Breakout
 
         public BrickArray BrickArray { get; set; }
 
+        public TopEdge TopEdge { get; set; }
+
+        public BottomEdge BottomEdge { get; set; }
+
+        public RightEdge RightEdge { get; set; }
+
+        public LeftEdge LeftEdge { get; set; }
+
         public GameArea()
         {
+            TopEdge = new TopEdge(MaxX);
+            BottomEdge = new BottomEdge(MaxX, MaxY);
+            RightEdge = new RightEdge(MaxX, MaxY);
+            LeftEdge = new LeftEdge(MaxY);
+
             Bat = new Bat();
             {
                 Bat.PositionX = MaxX / 2;
@@ -68,17 +81,17 @@ namespace Breakout
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
 
-            if (CollisionXEdge() == true)
+            if ((AreCollided(LeftEdge, Ball)) || (AreCollided(RightEdge, Ball)))
             {
                 Ball.BallDirection.X = -1 * Ball.BallDirection.X;
             }
 
-            if (CollisionZeroYEdge() == true)
+            if (AreCollided(TopEdge, Ball))
             {
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
 
-            if (CollisionMaxYEdge() == true)
+            if (AreCollided(BottomEdge, Ball))
             {
                 Ball = null;
             }
@@ -100,35 +113,6 @@ namespace Breakout
             return null;
         }
 
-        /// <summary>
-        /// #A function that decides if the ball has collided with the MaxX edge of the game area.
-        /// </summary>
-        public bool CollisionXEdge()
-        {
-            if (Ball.PositionX == MaxX || Ball.PositionX == 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool CollisionZeroYEdge()
-        {
-            if (Ball.PositionY == 0)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool CollisionMaxYEdge()
-        {
-            if (Ball.PositionY == MaxY)
-            {
-                return true;
-            }
-            return false;
-        }
 
         public bool AreCollided(ScreenObject object1, ScreenObject object2)
         {

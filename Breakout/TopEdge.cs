@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Breakout
 {
-    class TopEdge : ScreenObject
+    public class TopEdge : ScreenObject
     {
         public TopEdge(int MaxX)
         {
