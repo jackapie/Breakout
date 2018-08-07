@@ -42,11 +42,15 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="Bat.cs" />
+    <Compile Include="BottomEdge.cs" />
     <Compile Include="Brick.cs" />
     <Compile Include="BrickArray.cs" />
     <Compile Include="GameArea.cs" />
+    <Compile Include="LeftEdge.cs" />
+    <Compile Include="RightEdge.cs" />
     <Compile Include="ScreenObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopEdge.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
