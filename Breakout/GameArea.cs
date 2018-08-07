@@ -33,20 +33,57 @@ namespace Breakout
 
             
         }
-
+        /// <summary>
+        /// This function is to set the velocity of the ball when it is fired
+        /// </summary>
         public void FireBall()
         {
             Random rndm = new Random();
             int randomXY = rndm.Next(2, 4);
             
-            Ball.Move(randomXY, randomXY);
+            
+            Ball.BallDirection.X = randomXY;
+            Ball.BallDirection.Y = randomXY;
+
             
 
         }
 
+        /// <summary>
+        /// This function (atm) should keep the ball travelling in the direction of balldirection
+        /// , set by the FireBall function.
+        /// However, the ball should have velocity (O,O) until the ball is fired.
+        /// </summary>
+
         public void PlayTurn()
         {
+            
+            Ball.Move(Ball.BallDirection.X, Ball.BallDirection.Y);
 
+            var brick = CollisionBrickVsBall();
+            if(brick != null)
+            {
+                BrickArray.Bricks.Remove(brick);
+                Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
+            }
+            
         }
+
+        /// <summary>
+        /// A function that decides if the ball has collided with a brick
+        /// </summary>
+        public Brick CollisionBrickVsBall()
+        {
+            foreach(var brick in BrickArray.Bricks)
+            {
+                if(((brick.PositionX == Ball.PositionX) || (brick.PositionX + 1 == Ball.PositionX) || (brick.PositionX - 1 == Ball.PositionX)) 
+                    && brick.PositionY == Ball.PositionY)
+                {
+                    return brick;
+                }
+             }
+            return null;
+        } 
+
     }
 }
