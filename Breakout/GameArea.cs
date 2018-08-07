@@ -39,7 +39,7 @@ namespace Breakout
         public void FireBall()
         {
             Random rndm = new Random();
-            int randomXY = rndm.Next(2, 4);
+            int randomXY = rndm.Next(-2, -4);
             
             
             Ball.BallDirection.X = randomXY;
@@ -66,6 +66,21 @@ namespace Breakout
                 BrickArray.Bricks.Remove(brick);
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
+
+            if(CollisionXEdge() == true)
+            {
+                Ball.BallDirection.X = -1 * Ball.BallDirection.X;
+            }
+
+            if(CollisionZeroYEdge() == true)
+            {
+                Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
+            }
+
+            if(CollisionMaxYEdge() == true)
+            {
+                Ball = null;
+            }
             
         }
 
@@ -83,7 +98,36 @@ namespace Breakout
                 }
              }
             return null;
-        } 
+        }
 
+        /// <summary>
+        /// #A function that decides if the ball has collided with the MaxX edge of the game area.
+        /// </summary>
+        public bool CollisionXEdge()
+        {
+            if(Ball.PositionX == MaxX || Ball.PositionX == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CollisionZeroYEdge()
+        {
+            if(Ball.PositionY == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CollisionMaxYEdge()
+        {
+            if(Ball.PositionY == MaxY)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
