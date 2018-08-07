@@ -36,6 +36,11 @@ namespace Breakout
 
         public void FireBall()
         {
+            Random rndm = new Random();
+            int randomXY = rndm.Next(2, 4);
+            
+            Ball.Move(randomXY, randomXY);
+            
 
         }
 
