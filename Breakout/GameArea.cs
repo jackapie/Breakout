@@ -29,10 +29,10 @@ namespace Breakout
                 Ball.PositionX = Bat.PositionX + 1;
                 Ball.PositionY = Bat.PositionY + 1;
             }
-           
+
             BrickArray = new BrickArray();
 
-            
+
         }
         /// <summary>
         /// This function is to set the velocity of the ball when it is fired
@@ -41,12 +41,12 @@ namespace Breakout
         {
             Random rndm = new Random();
             int randomXY = rndm.Next(-2, -4);
-            
-            
+
+
             Ball.BallDirection.X = randomXY;
             Ball.BallDirection.Y = randomXY;
 
-            
+
 
         }
 
@@ -58,31 +58,31 @@ namespace Breakout
 
         public void PlayTurn()
         {
-            
+
             Ball.Move(Ball.BallDirection.X, Ball.BallDirection.Y);
 
             var brick = CollisionBrickVsBall();
-            if(brick != null)
+            if (brick != null)
             {
                 BrickArray.Bricks.Remove(brick);
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
 
-            if(CollisionXEdge() == true)
+            if (CollisionXEdge() == true)
             {
                 Ball.BallDirection.X = -1 * Ball.BallDirection.X;
             }
 
-            if(CollisionZeroYEdge() == true)
+            if (CollisionZeroYEdge() == true)
             {
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
 
-            if(CollisionMaxYEdge() == true)
+            if (CollisionMaxYEdge() == true)
             {
                 Ball = null;
             }
-            
+
         }
 
         /// <summary>
@@ -90,14 +90,13 @@ namespace Breakout
         /// </summary>
         public Brick CollisionBrickVsBall()
         {
-            foreach(var brick in BrickArray.Bricks)
+            foreach (var brick in BrickArray.Bricks)
             {
-                if(((brick.PositionX == Ball.PositionX) || (brick.PositionX + 1 == Ball.PositionX) || (brick.PositionX - 1 == Ball.PositionX)) 
-                    && brick.PositionY == Ball.PositionY)
+                if (AreCollided(brick, Ball))
                 {
                     return brick;
                 }
-             }
+            }
             return null;
         }
 
@@ -106,7 +105,7 @@ namespace Breakout
         /// </summary>
         public bool CollisionXEdge()
         {
-            if(Ball.PositionX == MaxX || Ball.PositionX == 0)
+            if (Ball.PositionX == MaxX || Ball.PositionX == 0)
             {
                 return true;
             }
@@ -115,7 +114,7 @@ namespace Breakout
 
         public bool CollisionZeroYEdge()
         {
-            if(Ball.PositionY == 0)
+            if (Ball.PositionY == 0)
             {
                 return true;
             }
@@ -124,17 +123,19 @@ namespace Breakout
 
         public bool CollisionMaxYEdge()
         {
-            if(Ball.PositionY == MaxY)
+            if (Ball.PositionY == MaxY)
             {
                 return true;
             }
             return false;
         }
 
-        public bool TestCollisionBrickBall(Brick brick, Ball ball)
+        public bool AreCollided(ScreenObject object1, ScreenObject object2)
         {
-            if(((brick.PositionX == ball.PositionX) || (brick.PositionX + 1 == ball.PositionX) || (brick.PositionX - 1 == ball.PositionX))
-                    && brick.PositionY == ball.PositionY)
+            var xMissing = (object1.PositionX >= object2.PositionX + object2.SizeX) || (object2.PositionX >= object1.PositionX + object1.SizeX);
+            var yMissing = (object1.PositionY >= object2.PositionY + object2.SizeY) || (object2.PositionY >= object1.PositionY + object1.SizeY);
+            if (xMissing == false && yMissing == false)
+
             {
                 return true;
             }

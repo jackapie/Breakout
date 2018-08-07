@@ -24,7 +24,7 @@ namespace Breakout.Tests
             brick.PositionX = 20;
             brick.PositionY = 17;
 
-            Assert.AreEqual(true, gameArea.TestCollisionBrickBall(brick, ball));
+            Assert.AreEqual(true, gameArea.AreCollided(brick, ball));
             
         }
     }
