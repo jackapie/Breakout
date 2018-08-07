@@ -39,8 +39,8 @@ namespace Breakout
             }
             Ball = new Ball();
             {
-                Ball.PositionX = Bat.PositionX + 1;
-                Ball.PositionY = Bat.PositionY + 1;
+                Ball.PositionX = Bat.PositionX - 1;
+                Ball.PositionY = Bat.PositionY - 1;
             }
 
             BrickArray = new BrickArray();
@@ -53,11 +53,16 @@ namespace Breakout
         public void FireBall()
         {
             Random rndm = new Random();
-            int randomXY = rndm.Next(-2, -4);
+            int randomXY = rndm.Next(1, 2);
 
+            var xDirection = 1;
+            if (randomXY == 2)
+            {
+                xDirection = -1;
+            }
 
-            Ball.BallDirection.X = randomXY;
-            Ball.BallDirection.Y = randomXY;
+            Ball.BallDirection.X = xDirection;
+            Ball.BallDirection.Y = -1;
 
 
 
