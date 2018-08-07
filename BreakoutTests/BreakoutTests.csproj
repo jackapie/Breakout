@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BrickArrayTests.cs" />
+    <Compile Include="GameAreaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

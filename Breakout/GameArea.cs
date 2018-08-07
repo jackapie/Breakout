@@ -19,16 +19,17 @@ namespace Breakout
 
         public GameArea()
         {
-            Ball = new Ball();
-            {
-                Ball.PositionX = Bat.PositionX + 1;
-                Ball.PositionY = Bat.PositionY + 1;
-            }
             Bat = new Bat();
             {
                 Bat.PositionX = MaxX / 2;
                 Bat.PositionY = MaxY - 2;
             }
+            Ball = new Ball();
+            {
+                Ball.PositionX = Bat.PositionX + 1;
+                Ball.PositionY = Bat.PositionY + 1;
+            }
+           
             BrickArray = new BrickArray();
 
             
@@ -124,6 +125,16 @@ namespace Breakout
         public bool CollisionMaxYEdge()
         {
             if(Ball.PositionY == MaxY)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool TestCollisionBrickBall(Brick brick, Ball ball)
+        {
+            if(((brick.PositionX == ball.PositionX) || (brick.PositionX + 1 == ball.PositionX) || (brick.PositionX - 1 == ball.PositionX))
+                    && brick.PositionY == ball.PositionY)
             {
                 return true;
             }
