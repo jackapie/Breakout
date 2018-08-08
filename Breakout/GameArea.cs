@@ -56,7 +56,7 @@ namespace Breakout
             int randomXY = rndm.Next(0, 2);
 
             var xDirection = 1;
-            if (randomXY == 2)
+            if (randomXY == 1)
             {
                 xDirection = -1;
             }
