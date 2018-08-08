@@ -57,7 +57,7 @@ namespace ConsoleUI
                     Console.Write("O");
                 }
 
-                System.Threading.Thread.Sleep(300);
+                System.Threading.Thread.Sleep(600);
             }
         }
 

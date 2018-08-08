@@ -126,10 +126,10 @@ namespace Breakout
 
         public bool AreCollided(ScreenObject object1, ScreenObject object2)
         {
-            var xMissing = (object1.PositionX >= object2.PositionX + object2.SizeX) 
-                || (object2.PositionX >= object1.PositionX + object1.SizeX);
-            var yMissing = (object1.PositionY >= object2.PositionY + object2.SizeY) 
-                || (object2.PositionY >= object1.PositionY + object1.SizeY);
+            var xMissing = (object1.PositionX > object2.PositionX + object2.SizeX) 
+                || (object2.PositionX > object1.PositionX + object1.SizeX);
+            var yMissing = (object1.PositionY > object2.PositionY + object2.SizeY) 
+                || (object2.PositionY > object1.PositionY + object1.SizeY);
             if (xMissing == false && yMissing == false)
 
             {
