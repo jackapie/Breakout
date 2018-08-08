@@ -38,32 +38,32 @@ namespace Breakout
                 {
                     if (a == 0)
                     {
-                        brick1.Colour = "red";
+                        brick1.Colour = "Red";
                     }
                     else
                     {
-                        brick1.Colour = "green";
+                        brick1.Colour = "Blue";
                     }
                 }
 
                 {
                     if (b == 0)
                     {
-                        brick2.Colour = "green";
+                        brick2.Colour = "Blue";
                     }
                     else
                     {
-                        brick2.Colour = "red";
+                        brick2.Colour = "Red";
                     }
                 }
                 {
                     if (c == 0)
                     {
-                        brick3.Colour = "red";
+                        brick3.Colour = "Red";
                     }
                     else
                     {
-                        brick3.Colour = "green";
+                        brick3.Colour = "Blue";
                     }
                 }
             }

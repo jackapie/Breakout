@@ -45,7 +45,7 @@ namespace ConsoleUI
                 {
                     Console.SetCursorPosition(brick.PositionX, brick.PositionY);
 
-                    Console.Write(brick.Colour[0]);
+                    Console.Write(brick.Colour.Substring(0, brick.SizeX));
                 }
 
                 Console.SetCursorPosition(game.Bat.PositionX, game.Bat.PositionY);
