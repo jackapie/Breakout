@@ -30,10 +30,10 @@ namespace ConsoleUI
                 switch (currentAction)
                 {
                     case "LEFT":
-                        game.Bat.Move(-1, 0);
+                        game.bat.Move(-1, 0);
                         break;
                     case "RIGHT":
-                        game.Bat.Move(1, 0);
+                        game.bat.Move(1, 0);
                         break;
                     case "FIRE":
                         game.FireBall();
@@ -41,23 +41,23 @@ namespace ConsoleUI
                 }
 
                 currentAction = "";
-                foreach (var brick in game.BrickArray.Bricks)
+                foreach (var brick in game.brickArray.Bricks)
                 {
                     Console.SetCursorPosition(brick.PositionX, brick.PositionY);
 
                     Console.Write(brick.Colour.Substring(0, brick.SizeX));
                 }
 
-                Console.SetCursorPosition(game.Bat.PositionX, game.Bat.PositionY);
+                Console.SetCursorPosition(game.bat.PositionX, game.bat.PositionY);
                 Console.Write("Bat");
 
              
                 {
-                    Console.SetCursorPosition(game.Ball.PositionX, game.Ball.PositionY);
+                    Console.SetCursorPosition(game.ball.PositionX, game.ball.PositionY);
                     Console.Write("O");
                 }
 
-                System.Threading.Thread.Sleep(600);
+                System.Threading.Thread.Sleep(300);
             }
         }
 

@@ -11,39 +11,39 @@ namespace Breakout
         public const int MaxX = 60;
         public const int MaxY = 30;
 
-        public Ball Ball { get; set; }
+        public Ball ball { get; set; }
 
-        public Bat Bat { get; set; }
+        public Bat bat { get; set; }
 
-        public BrickArray BrickArray { get; set; }
+        public BrickArray brickArray { get; set; }
 
-        public TopEdge TopEdge { get; set; }
+        public TopEdge topEdge { get; set; }
 
-        public BottomEdge BottomEdge { get; set; }
+        public BottomEdge bottomEdge { get; set; }
 
-        public RightEdge RightEdge { get; set; }
+        public RightEdge rightEdge { get; set; }
 
-        public LeftEdge LeftEdge { get; set; }
+        public LeftEdge leftEdge { get; set; }
 
         public GameArea()
         {
-            TopEdge = new TopEdge(MaxX);
-            BottomEdge = new BottomEdge(MaxX, MaxY);
-            RightEdge = new RightEdge(MaxX, MaxY);
-            LeftEdge = new LeftEdge(MaxY);
+            topEdge = new TopEdge(MaxX);
+            bottomEdge = new BottomEdge(MaxX, MaxY);
+            rightEdge = new RightEdge(MaxX, MaxY);
+            leftEdge = new LeftEdge(MaxY);
 
-            Bat = new Bat();
+            bat = new Bat();
             {
-                Bat.PositionX = MaxX / 2;
-                Bat.PositionY = MaxY - 2;
+                bat.PositionX = MaxX / 2;
+                bat.PositionY = MaxY - 2;
             }
-            Ball = new Ball();
+            ball = new Ball();
             {
-                Ball.PositionX = Bat.PositionX - 1;
-                Ball.PositionY = Bat.PositionY - 1;
+                ball.PositionX = bat.PositionX - 1;
+                ball.PositionY = bat.PositionY - 1;
             }
 
-            BrickArray = new BrickArray();
+            brickArray = new BrickArray();
 
 
         }
@@ -61,8 +61,8 @@ namespace Breakout
                 xDirection = -1;
             }
 
-            Ball.BallDirection.X = xDirection;
-            Ball.BallDirection.Y = -1;
+            ball.BallDirection.X = xDirection;
+            ball.BallDirection.Y = -1;
 
 
 
@@ -77,33 +77,37 @@ namespace Breakout
         public void PlayTurn()
         {
 
-            Ball.Move(Ball.BallDirection.X, Ball.BallDirection.Y);
+            ball.Move(ball.BallDirection.X, ball.BallDirection.Y);
 
             var brick = CollisionBrickVsBall();
             if (brick != null)
             {
-                BrickArray.Bricks.Remove(brick);
-                Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
+                brickArray.Bricks.Remove(brick);
+                ball.BallDirection.Y = -1 * ball.BallDirection.Y;
             }
 
-            if ((AreCollided(LeftEdge, Ball)) || (AreCollided(RightEdge, Ball)))
+            if ((AreCollided(leftEdge, ball)) || (AreCollided(rightEdge, ball)))
             {
-                Ball.BallDirection.X = -1 * Ball.BallDirection.X;
+                ball.BallDirection.X = -1 * ball.BallDirection.X;
             }
 
-            if (AreCollided(TopEdge, Ball))
+            if (AreCollided(topEdge, ball))
             {
-                Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
+                ball.BallDirection.Y = -1 * ball.BallDirection.Y;
             }
 
-            if (AreCollided(Bat, Ball))
+            if (AreCollided(bat, ball))
             {
-                Ball.BallDirection.Y = -Ball.BallDirection.Y;
+                ball.BallDirection.Y = -ball.BallDirection.Y;
             }
 
-            if (AreCollided(BottomEdge, Ball))
+            if (AreCollided(bottomEdge, ball))
             {
-                Ball = null;
+                ball = new Ball();
+                ball.PositionX = bat.PositionX;
+                ball.PositionY = bat.PositionY - 1;
+
+
             }
 
         }
@@ -113,9 +117,9 @@ namespace Breakout
         /// </summary>
         public Brick CollisionBrickVsBall()
         {
-            foreach (var brick in BrickArray.Bricks)
+            foreach (var brick in brickArray.Bricks)
             {
-                if (AreCollided(brick, Ball))
+                if (AreCollided(brick, ball))
                 {
                     return brick;
                 }
