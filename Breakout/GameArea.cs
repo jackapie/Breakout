@@ -53,7 +53,7 @@ namespace Breakout
         public void FireBall()
         {
             Random rndm = new Random();
-            int randomXY = rndm.Next(1, 2);
+            int randomXY = rndm.Next(0, 2);
 
             var xDirection = 1;
             if (randomXY == 2)
@@ -96,6 +96,11 @@ namespace Breakout
                 Ball.BallDirection.Y = -1 * Ball.BallDirection.Y;
             }
 
+            if (AreCollided(Bat, Ball))
+            {
+                Ball.BallDirection.Y = -Ball.BallDirection.Y;
+            }
+
             if (AreCollided(BottomEdge, Ball))
             {
                 Ball = null;
@@ -121,8 +126,10 @@ namespace Breakout
 
         public bool AreCollided(ScreenObject object1, ScreenObject object2)
         {
-            var xMissing = (object1.PositionX >= object2.PositionX + object2.SizeX) || (object2.PositionX >= object1.PositionX + object1.SizeX);
-            var yMissing = (object1.PositionY >= object2.PositionY + object2.SizeY) || (object2.PositionY >= object1.PositionY + object1.SizeY);
+            var xMissing = (object1.PositionX >= object2.PositionX + object2.SizeX) 
+                || (object2.PositionX >= object1.PositionX + object1.SizeX);
+            var yMissing = (object1.PositionY >= object2.PositionY + object2.SizeY) 
+                || (object2.PositionY >= object1.PositionY + object1.SizeY);
             if (xMissing == false && yMissing == false)
 
             {
