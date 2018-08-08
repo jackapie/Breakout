@@ -40,7 +40,7 @@ namespace ConsoleUI
                 Console.Write("O");
             }
 
-            System.Threading.Thread.Sleep(300);
+            System.Threading.Thread.Sleep(150);
         }
 
 
@@ -64,10 +64,6 @@ namespace ConsoleUI
                 Console.Clear();
 
                 game.PlayTurn();
-
-                PlayerTurn(game);
-
-                Console.Clear();
 
                 PlayerTurn(game);
             }

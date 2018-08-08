@@ -10,6 +10,7 @@ namespace Breakout
     {
         public const int MaxX = 60;
         public const int MaxY = 30;
+        int GameTurn = 1;
 
         public Ball ball { get; set; }
 
@@ -76,40 +77,43 @@ namespace Breakout
 
         public void PlayTurn()
         {
-
-            ball.Move(ball.BallDirection.X, ball.BallDirection.Y);
-
-            var brick = CollisionBrickVsBall();
-            if (brick != null)
+            if (GameTurn % 2 == 0)
             {
-                brickArray.Bricks.Remove(brick);
-                ball.BallDirection.Y = -1 * ball.BallDirection.Y;
+
+                ball.Move(ball.BallDirection.X, ball.BallDirection.Y);
+
+                var brick = CollisionBrickVsBall();
+                if (brick != null)
+                {
+                    brickArray.Bricks.Remove(brick);
+                    ball.BallDirection.Y = -1 * ball.BallDirection.Y;
+                }
+
+                if ((AreCollided(leftEdge, ball)) || (AreCollided(rightEdge, ball)))
+                {
+                    ball.BallDirection.X = -1 * ball.BallDirection.X;
+                }
+
+                if (AreCollided(topEdge, ball))
+                {
+                    ball.BallDirection.Y = -1 * ball.BallDirection.Y;
+                }
+
+                if (AreCollided(bat, ball))
+                {
+                    ball.BallDirection.Y = -ball.BallDirection.Y;
+                }
+
+                if (AreCollided(bottomEdge, ball))
+                {
+                    ball = new Ball();
+                    ball.PositionX = bat.PositionX;
+                    ball.PositionY = bat.PositionY - 1;
+
+
+                }
             }
-
-            if ((AreCollided(leftEdge, ball)) || (AreCollided(rightEdge, ball)))
-            {
-                ball.BallDirection.X = -1 * ball.BallDirection.X;
-            }
-
-            if (AreCollided(topEdge, ball))
-            {
-                ball.BallDirection.Y = -1 * ball.BallDirection.Y;
-            }
-
-            if (AreCollided(bat, ball))
-            {
-                ball.BallDirection.Y = -ball.BallDirection.Y;
-            }
-
-            if (AreCollided(bottomEdge, ball))
-            {
-                ball = new Ball();
-                ball.PositionX = bat.PositionX;
-                ball.PositionY = bat.PositionY - 1;
-
-
-            }
-
+            GameTurn++;
         }
 
         /// <summary>
