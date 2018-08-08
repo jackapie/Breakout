@@ -10,8 +10,9 @@ namespace Breakout
     {
         public TopEdge(int MaxX)
         {
-            SizeX = MaxX;
-            PositionX = 0;
+            SizeX = MaxX + 2;
+            SizeY = 1;
+            PositionX = -1;
             PositionY = 0;
         }
     }

@@ -27,5 +27,17 @@ namespace Breakout.Tests
             Assert.AreEqual(true, gameArea.AreCollided(brick, ball));
             
         }
+
+        [TestMethod()]
+        public void TestCollisionBottomEdgeBallTest()
+        {
+            var gameArea = new GameArea();
+            var ball = new Ball();
+            var bottomEdge = new BottomEdge(GameArea.MaxX, GameArea.MaxY);
+            ball.PositionX = GameArea.MaxX;
+            ball.PositionY = GameArea.MaxY;
+
+            Assert.AreEqual(true, gameArea.AreCollided(bottomEdge, ball));
+        }
     }
 }

@@ -10,9 +10,10 @@ namespace Breakout
     {
         public RightEdge(int maxX, int maxY)
         {
-            SizeY = maxY;
+            SizeX = 1;
+            SizeY = maxY + 2;
             PositionX = maxX;
-            PositionY = 0;
+            PositionY = -1;
         }
     }
 }

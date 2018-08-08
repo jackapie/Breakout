@@ -10,9 +10,10 @@ namespace Breakout
     {
         public LeftEdge(int maxY)
         {
-            SizeY = maxY;
+            SizeX = 1;
+            SizeY = maxY + 2;
             PositionX = 0;
-            PositionY = 0;
+            PositionY = -1;
         }
     }
 }
